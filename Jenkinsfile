@@ -6,6 +6,7 @@ stage 'Dev'
 node {
     checkout scm
     servers = load 'servers.groovy'
+    mvn '-o -X install'
     mvn '-o -X clean package'
     dir('target') {stash name: 'war', includes: 'x.war'}
 }
