@@ -16,9 +16,20 @@ public class CarbonManagement {
 
 	@Before
 	public void setUp() throws Exception {
-		WebDriver driver = new FirefoxDriver();
-		String baseUrl = "https://www.united.com/";
-		selenium = new WebDriverBackedSelenium(driver, baseUrl);
+		// WebDriver driver = new FirefoxDriver();
+		// String baseUrl = "https://www.united.com/";
+		// selenium = new WebDriverBackedSelenium(driver, baseUrl);
+
+
+		String serverUrl = System.getProperty("grid.server.url");
+		String gridServerUrl = "http://192.168.99.100:4444/wd/hub";
+		if (serverUrl != null) {
+			gridServerUrl = serverUrl;
+		}
+		DesiredCapabilities capability = DesiredCapabilities.firefox();
+		URL gridUrl = new URL(gridServerUrl);
+		driver = new RemoteWebDriver(gridUrl, capability);
+		driver.get("https://www.united.com/");
 	}
 
 	@Test
