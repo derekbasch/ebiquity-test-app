@@ -29,10 +29,31 @@ public class CarbonManagement {
 		selenium.waitForPageToLoad("30000");
 		selenium.click("link=Fuel efficiency and carbon management");
 		selenium.waitForPageToLoad("30000");
+
+        String path;
+        try {
+            WebDriver augmentedDriver = new Augmenter().augment(driver);
+            File source = ((TakesScreenshot)augmentedDriver).getScreenshotAs(OutputType.FILE);
+            path = "/tmp/screenshots/" + source.getName();
+            FileUtils.copyFile(source, new File(path)); 
+        }
+        catch(IOException e) {
+            e.printStackTrace();
+        } 		
 	}
 
 	@After
 	public void tearDown() throws Exception {
+        String path;
+        try {
+            WebDriver augmentedDriver = new Augmenter().augment(driver);
+            File source = ((TakesScreenshot)augmentedDriver).getScreenshotAs(OutputType.FILE);
+            path = "/tmp/screenshots/" + source.getName();
+            FileUtils.copyFile(source, new File(path)); 
+        }
+        catch(IOException e) {
+            e.printStackTrace();
+        }		
 		selenium.stop();
 	}
 }
