@@ -1,3 +1,3 @@
-Selenium2 Maven Demo Tests
+Maven Demo Tests
 ==============================
 
