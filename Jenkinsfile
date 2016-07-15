@@ -30,13 +30,16 @@ try {
 
 stage 'Functional Test'
 node {
-	
+
     checkout scm
 
     // Build in offline mode
-    // mvn "-o -X test"
+    // mvn "-o test"
 
-    mvn "-X test"
+    // Build in verbose mode
+    // mvn "-X test"
+    
+    mvn "test"
 
 }
 
