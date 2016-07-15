@@ -1,4 +1,4 @@
-stage 'Dev'
+stage 'Development'
 node {
     // checkout scm
     
@@ -7,7 +7,7 @@ node {
     // dir('target') {stash name: 'war', includes: 'x.war'}
 }
 
-input message: "Application published to Integration?"
+input message: "Application published to testing environment?"
 try {
     checkpoint('Before Integration')
 } catch (NoSuchMethodError _) {
@@ -20,7 +20,7 @@ node {
 
 }
 
-input message: "Does Integration test result look good?"
+input message: "Does integration test result look good?"
 try {
     checkpoint('Before Functional')
 } catch (NoSuchMethodError _) {
@@ -38,7 +38,7 @@ node {
 
     // Build in verbose mode
     // mvn "-X test"
-    
+
     mvn "test"
 
 }
