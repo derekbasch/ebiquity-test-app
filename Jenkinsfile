@@ -30,8 +30,14 @@ try {
 
 stage 'Functional Test'
 node {
+	
     checkout scm
-    mvn "-o -X test"
+
+    // Build in offline mode
+    // mvn "-o -X test"
+
+    mvn "-X test"
+
 }
 
 input message: "Does functional test result look good?"
